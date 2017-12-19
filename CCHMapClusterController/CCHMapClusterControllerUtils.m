@@ -234,7 +234,7 @@ static char *GEOHASH_encode(double lat, double lon, unsigned long len)
     assert(lon <= 180.0);
     assert(len <= MAX_HASH_LENGTH);
     
-    hash = (char *)malloc(sizeof(char) * (len + 1));
+    hash = (char *)calloc(1, sizeof(char) * (len + 1));
     if (hash == NULL)
         return NULL;
     

@@ -42,7 +42,7 @@
 {
     self = [super init];
     if (self) {
-        _objects = (__unsafe_unretained id *)malloc(capacity * sizeof(id));
+        _objects = (__unsafe_unretained id *)calloc(1, capacity * sizeof(id));
         _numObjects = 0;
         _capacity = capacity ? capacity : 1;
     }
@@ -69,7 +69,7 @@
 
 CCHMapTreeNode *CCHMapTreeNodeMake(CCHMapTreeBoundingBox boundary, unsigned long bucketCapacity)
 {
-    CCHMapTreeNode* node = malloc(sizeof(CCHMapTreeNode));
+    CCHMapTreeNode* node = calloc(1, sizeof(CCHMapTreeNode));
     node->northWest = NULL;
     node->northEast = NULL;
     node->southWest = NULL;
@@ -77,7 +77,7 @@ CCHMapTreeNode *CCHMapTreeNodeMake(CCHMapTreeBoundingBox boundary, unsigned long
 
     node->boundingBox = boundary;
     node->count = 0;
-    node->points = malloc(sizeof(CCHMapTreeNodeData) * bucketCapacity);
+    node->points = calloc(1, (sizeof(CCHMapTreeNodeData) * bucketCapacity));
 
     return node;
 }

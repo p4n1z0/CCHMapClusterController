@@ -24,7 +24,7 @@ TBBoundingBox TBBoundingBoxMake(double x0, double y0, double xf, double yf)
 
 TBQuadTreeNode* TBQuadTreeNodeMake(TBBoundingBox boundary, int bucketCapacity)
 {
-    TBQuadTreeNode* node = malloc(sizeof(TBQuadTreeNode));
+    TBQuadTreeNode* node = calloc(1, (sizeof(TBQuadTreeNode)));
     node->northWest = NULL;
     node->northEast = NULL;
     node->southWest = NULL;
@@ -33,7 +33,7 @@ TBQuadTreeNode* TBQuadTreeNodeMake(TBBoundingBox boundary, int bucketCapacity)
     node->boundingBox = boundary;
     node->bucketCapacity = bucketCapacity;
     node->count = 0;
-    node->points = malloc(sizeof(TBQuadTreeNodeData) * bucketCapacity);
+    node->points = calloc(1, (sizeof(TBQuadTreeNodeData) * bucketCapacity));
 
     return node;
 }

@@ -164,7 +164,7 @@ TBBoundingBox TBBoundingBoxForMapRect(MKMapRect mapRect)
 - (void)testTBQuadTree
 {
     NSUInteger count = self.annotations.count;
-    TBQuadTreeNodeData *dataArray = malloc(sizeof(TBQuadTreeNodeData) * count);
+    TBQuadTreeNodeData *dataArray = calloc(1, (sizeof(TBQuadTreeNodeData) * count));
     for (NSInteger i = 0; i < count; i++) {
         id<MKAnnotation> annotation = self.annotations[i];
         dataArray[i] = TBQuadTreeNodeDataMake(annotation.coordinate.latitude, annotation.coordinate.longitude, (__bridge void*)annotation);
